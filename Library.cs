@@ -31,5 +31,33 @@ namespace csharp_biblioteca
                 $"\n{user.email}" +
                 $"\n{user.number}");
         }
+
+        public void search()
+        {
+            bool search = true;
+            Console.WriteLine("Libri | DVD | indietro");
+            while (search == true)
+            {
+                var input = Console.ReadLine();
+                switch (input)
+                {
+                    case "libri":
+                        Console.WriteLine("Lista libri: ");
+                        break;
+                    case "dvd":
+                        Console.WriteLine("Lista DVD: ");
+                        break;
+                    case "indietro":
+                        search = false;
+                        break;
+                    case "esci" or "exit":
+                        Environment.Exit(0);
+                        break;
+                    default:
+                        Console.WriteLine("Input non valido");
+                        break;
+                }
+            }
+        }
     }
 }
