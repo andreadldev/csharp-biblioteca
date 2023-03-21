@@ -8,7 +8,7 @@ namespace csharp_biblioteca
 {
     internal class Library
     {
-        public void Register()
+        public void userRegister()
         {
             Console.WriteLine("Inserisci il nome");
             var first_name = Console.ReadLine();
