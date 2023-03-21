@@ -2,22 +2,29 @@
 using System.Runtime.ConstrainedExecution;
 
 Console.WriteLine("Gestionale biblioteca");
-bool registered = false;
+
+var Library = new Library();
+bool isUserRegistered = false;
 
 while (true)
 {
-    Console.WriteLine("registrati | esci");
+    Console.WriteLine("registrati | ricerca | esci");
     var input = Console.ReadLine();
 
     switch (input)
     {
         case "registrati":
-            if (registered == true)
+            if (isUserRegistered == true)
             {
                 Console.WriteLine("Sei già registrato.");
                 break;
             }
-            Register();
+            Library.userRegister();
+            isUserRegistered = true;
+            break;
+        case "ricerca":
+
+            Console.WriteLine("bravo il coglione");
             break;
         case "esci" or "exit":
             Environment.Exit(0);
@@ -26,29 +33,4 @@ while (true)
             Console.WriteLine("Input non valido");
             break;
     }
-}
-
-void Register()
-{
-    Console.WriteLine("\nInserisci il nome");
-    var first_name = Console.ReadLine();
-
-    Console.WriteLine("\nInserisci il cognome");
-    var last_name = Console.ReadLine();
-
-    Console.WriteLine("\nInserisci l'email");
-    var email = Console.ReadLine();
-
-    Console.WriteLine("\nInserisci la password");
-    var password = Console.ReadLine();
-
-    Console.WriteLine("\nInserisci il numero");
-    var number = Console.ReadLine();
-
-    var user = new User(first_name, last_name, email, password, number);
-    Console.WriteLine($"\nNuovo utente registrato: " +
-        $"\n{user.first_name} {user.last_name}" +
-        $"\n{user.email}" +
-        $"\n{user.number}");
-    registered = true;
 }
