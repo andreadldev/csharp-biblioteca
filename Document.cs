@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace csharp_biblioteca
 {
-    internal class Document
+    public class Document
     {
         public int code { get; } = new Random().Next(1000, 9999);
         public int shelf { get; } = new Random().Next(1, 30);
