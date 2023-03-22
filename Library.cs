@@ -11,8 +11,20 @@ namespace csharp_biblioteca
     {
         readonly static List<Document> _documents = new();
         public void AddDocument(Document document) => _documents.Add(document);
-        //public Document? SearchByCode(int code) => _documents.FirstOrDefault(document => document.code == code);
-        //public IEnumerable<Document> SearchByTitle(string title) => _documents.Where(document => document.title == title);
+
+        public static void SearchByTitle(string title)
+        {
+            for (int i = 0; i < _documents.Count; i++)
+            {
+                if (_documents[i].title == title)
+                {
+                    Console.WriteLine(_documents[i].title);
+                    Console.WriteLine(_documents[i].author);
+                    Console.WriteLine(_documents[i].year);
+                    Console.WriteLine(_documents[i].category);
+                }
+            }
+        }
 
         public static void ListBooks()
         {
@@ -63,9 +75,9 @@ namespace csharp_biblioteca
         public void search()
         {
             bool search = true;
-            Console.WriteLine("Libri | DVD | indietro");
             while (search == true)
             {
+                Console.WriteLine("Libri | DVD | Ricerca avanzata | indietro");
                 var input = Console.ReadLine();
                 switch (input)
                 {
@@ -76,6 +88,36 @@ namespace csharp_biblioteca
                     case "dvd":
                         Console.WriteLine("Lista DVD: ");
                         ListDvds();
+                        break;
+                    case "ricerca avanzata":
+                        advancedSearch();
+                        break;
+                    case "indietro":
+                        search = false;
+                        break;
+                    case "esci" or "exit":
+                        Environment.Exit(0);
+                        break;
+                    default:
+                        Console.WriteLine("Input non valido");
+                        break;
+                }
+            }
+        }
+
+        public void advancedSearch()
+        {
+            bool search = true;
+            while (search == true)
+            {
+                Console.WriteLine("Per titolo | Indietro");
+                var input = Console.ReadLine();
+                switch (input)
+                {
+                    case "per titolo":
+                        Console.WriteLine("Scrivi il titolo del documento");
+                        string query = Console.ReadLine();
+                        SearchByTitle(query);
                         break;
                     case "indietro":
                         search = false;
